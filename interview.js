@@ -19,22 +19,31 @@ for(var i =0;i<row;i++){
 
 $(document).ready(function(){
 $('div').on('click', '.square', function(e) {
-	
+
+	if(this.count === undefined)
+		this.count=0;
+
 		if(e.pageY > $(this).offset().top + $(this).outerHeight() - 10){
 			$(this).css("border-bottom","10px solid red");
-			$(this).css("border-bottom-color","red");
+			this.count++;
 		}
 
 		if(e.pageY < $(this).offset().top + 10 && e.pageY>$(this).offset().top){
 			$(this).css("border-top","10px solid green");
+			this.count++;
 		} 
 		if(e.pageX < $(this).offset().left + 10 && e.pageX>$(this).offset().left){
 			$(this).css("border-left","10px solid yellow");
+			this.count++;
 		}
 		
 		if(e.pageX > $(this).offset().left + $(this).outerHeight() - 10){
 		$(this).css("border-right","10px solid blue");
+		this.count++;
 		}
+		if(this.count >= 4){
+			$(this).css("background","black");
+		};
 });	
 	
 });
